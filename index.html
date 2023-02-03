@@ -7,14 +7,217 @@
     <title>AWS Cloud Practitioner Notes</title>
 </head>
 <body>
-    <h4>EC2 Pricing</h4>
-    <li>
-        <b>On-demand</b>
+    <div>
+        <h4>EC2 Pricing</h4>
+        <ul>
+            <li>
+                <b>On-demand</b>
+                    <ol>
+                        <li>Ideal for short term</li>
+                        <li>Unpredictable usage patterns</li>
+                        <li>Instances run continously until you stop them, pay as you use</li>
+                    </ol>
+            </li>
+            <li>
+                <b>Amazon EC2 Savings Plan</b>
+                <ol>
+                    <li>Reduce compute costs by committing consistent compute time for 1 or 3 years term.</li>
+                    <li>Cost is 72% of on-demand rate.</li>
+                </ol>
+            </li>
+            <li>
+                <b>Reserved Instances</b>
+                <ol>
+                    <li>Standard and convertible instance -- 1 to 3 year term</li>
+                    <li>Scheduled instance -- 1 year</li>
+                    <li>Billing is on discount of on-demand rate</li>
+                </ol>
+            </li>
+            <li>
+                <b>Spot instances</b>
+                <ol>
+                    <li>Flexible start and end.</li>
+                    <li>Automatic stop instance once work is done.</li>
+                    <li>90% off on on-demand rate.</li>
+                </ol>
+            </li>
+            <li>
+                <b>Dedicated Hosts</b>
+                <ol>
+                    <li>Physical servers will be provided only for dedicated users use.</li>
+                </ol>
+            </li>
+        </ul>
+    </div>
+
+    <div>
+        <h4>Elastic Load Balance</h4>
         <p>
-            <ul>Ideal for short term</ul>
-            <ul>Unpredictable usage patterns</ul>
-            <ul>Instances run continously until you stop them, pay as you use</ul>
+            Service that automatically distributes incloming traffic across multiple resorces.
+            Request -> Elb -> (multiple Ec2's)
         </p>
-    </li>
+    </div>
+    <div>
+        <h4>AWS EC2 Auto Scale</h4>
+        <p>
+            Scalability :- Will start with minimum resources and automatically add or remove as per demand.<br>
+            Ec2 Auto Scal :- Add or remove ec2 as per demand.<br>
+            1. Dynamic Scale<br>
+            2. Predictive Scale
+        </p>
+    </div>
+    <div>
+        <h4>How to select a region</h4>
+        <ol>
+            <li>Compliance with data governance and legal requiremnents.</li>
+            <li>Proximity to your customers.</li>
+            <li>Pricing</li>
+            <li>Available services within a region.</li>
+        </ol>
+    </div>
+    <div>
+        <h4>Edge Location</h4>
+        <p>
+            An edge location is a site that Amazon CloudFront uses to store cached copies of your context,
+            close to your customers for fast delivery.
+        </p>
+    </div>
+    <div>
+        <h4>How to provision AWS services</h4>
+        <ol>
+            <li>AWS management console</li>
+            <li>AWS Command line</li>
+            <li>AWS SDK's for different programming languages.</li>
+        </ol>
+    </div>
+    <div>
+        <h4>AWS Elastic Beanstalk</h4>
+        <p>
+            User need to provide code and configuration, this service will deploy all the necessary
+            resources like Load Balancer, Auto Scaling, Adjust capacity, etc.
+        </p>
+    </div>
+    <div>
+        <h4>AWS Cloud Formation</h4>
+        <p>Infrastructure as a code.</p>
+    </div>
+    <div>
+        <h4>VPC (Virtual Private Cloud)</h4>
+        <ol>
+            <li>Sets a boundary around AWS resorces so that unwanted requests won't call our resorces. Same as boundary wall around our home.</li>
+            <li>Resources are inside Subnet.</li>
+        </ol>
+    </div>
+    <div>
+        <h4>Internet Gateway</h4>
+        <ol>
+            <li>Servcie which allows public traffic from internet to your VPC.</li>
+            <li><i><b>Virtual Private Gateway</b></i> allow traffic to access private resources.</li>
+            <li><i><b>Direct Connect</b></i> Dedicated private connection between data centre and VPC.
+                Reduce network costs and increases amount of bandwidth.
+            </li>
+        </ol>
+    </div>
+    <div>
+        <h4>NACL (Network Access control list)</h4>
+        <ol>
+            <li>Virtual Firewall that controls inbound and outbound traffic at subnet level.</li>
+            <li>By default allow all traffic.</li>
+            <li>Its a <b>stateless service</b>, means request permission will be checked always(inbound and outbound)</li>
+        </ol>
+    </div>
+    <div>
+        <h4>Security Group</h4>
+        <ol>
+            <li>Virtual Firewall the controls inbound and outbound at EC2 level.</li>
+            <li>By default inbound is blocked or deny, outbound is allowed.</li>
+            <li>Its a <i><b>Statefull service</b></i>, means request is checked while its incoming(inbound).</li>
+        </ol>
+    </div>
+    <div>
+        <h4>Route 53</h4>
+        <p>A DNS service, connects to AWS service which work on internet. Stores domain names, do health check and directs request to AWS services.</p>
+    </div>
+    <div>
+        <h4>AWS Instance Store</h4>
+        <ol>
+            <li>Block-level storage volumes behaves like physical hard drives.</li>
+            <li>Instance is terminated data will be deleted.</li>
+            <li>Specific to individual EC2 instance.</li>
+        </ol>
+    </div>
+    <div>
+        <h4>Elastic Block Store(EBS)</h4>
+        <ol>
+            <li>Block level storage volume attached to EC2.</li>
+            <li>Data won't be loosed when instance is stopped or terminated.</li>
+            <li><b>EBS snapshot</b> is an incremental backup, means whatever is changed will be backed-up at specific intervals.</li>
+        </ol>
+    </div>
+    <div>
+        <h4>Elastic File System(EFS)</h4>
+        <ol>
+            <li>Scalable, used with cloud and on-premises.</li>
+            <li>Grow, shrinks automatically.</li>
+            <li>Large workloads</li>
+        </ol>
+    </div>
+    <div>
+        <h4>AWS S3(Simple Storage Service)</h4>
+        <p>Its a object storage, which saves data, key and metadata. Can save upto 5TB of object. Its types are:</p>
+        <ol>
+            <li>
+                <b>S3 Standard</b> :- Frequently accessed data. Dat can be store in 3 Availability Zones.
+            </li>
+            <li>
+                <b>S3 Standard IA</b> :- Infrequently accessed data. Storage price decreases, retrieval price increases.
+            </li>
+            <li>
+                <b>S3 Glacier Instant Retrieval</b> :- Works well for archieved data instant access. (Retrieves in milliseconds)
+            </li>
+            <li>
+                <b>S3 Glacier Flexible Retrieval</b> :- Low cost storage for archived data. (Retrieves in mins to hours)
+            </li>
+            <li>
+                <b>S3 Glacier Deep Archive</b> :- Low cost (Retrieves in 12 hours)
+            </li>
+        </ol>
+        <h5>AWS S3 Outposts</h5>
+        <p>
+            Delivers object storage to on-premises AWS outposts environment. Retreive, store, access data on AWS outposts. 
+        </p>
+    </div>
+    <div>
+        <h4>Different databases in AWS</h4>
+        <ol>
+            <li>
+                <b>AWS RDS</b> : Used for SQL/PostgreSql related data. Usage of parent-child relationship and joins.
+            </li>
+            <li>
+                <b>AWS Dynamodb</b> : Used when NoSql data storage is priority. Stores data in key-value pair.
+            </li>
+            <li>
+                <b>AWS Document DB</b> : Used when objects or documents need to be stored. MongoDb like usage.
+            </li>
+            <li>
+                <b>AWS Redshift</b> : Used for data warehouse and data analytics.
+            </li>
+            <li>
+                <b>AWS ElasticCache</b> : Caching of data when need faster retrieval. This is created on-top of above DBs.
+            </li>
+            <li>
+                <b>AWS Arora</b>
+            </li>
+        </ol>
+    </div>
+    <div>
+        <h4>AWS Database Migration</h4>
+        <p>Moves data between source and destination.</p>
+        <ol>
+            <li>Development and test DB migration : Best for developers.</li>
+            <li>Database Consolidation : Combine several DB to single DB.</li>
+            <li>Continous Replication</li>
+        </ol>
+    </div>
 </body>
 </html>
